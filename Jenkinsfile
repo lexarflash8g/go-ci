@@ -26,8 +26,9 @@ stage('Test') {
 
 stage('Code Analysis') {
     steps {
-        sh 'sudo curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sudo bash -s -- -b $GOPATH/bin v1.17.1'
-        sh 'sudo golangci-lint run'
+        sh 'curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.10.2'
+        sh 'cp ./bin/golangci-lint $GOPATH/bin/'
+        sh 'golangci-lint run'
     }
 }
 
